@@ -1,0 +1,136 @@
+/* ==================================================================
+   Trendy Traders Academy — responsive layer
+   Mobile (the primary design) lives in style.css. These queries only
+   expand the same design for small phones, tablets and desktops.
+   Tested: 320, 360, 375, 390, 430, 768, 1024, 1280, 1440.
+   ================================================================== */
+
+/* Small phones (≤ 359px): keep proportions without crowding */
+@media (max-width: 359.98px) {
+  .brand__fallback { font-size: 1rem; }
+  .brand__logo { height: 32px; max-width: 170px; }
+  .trust { gap: var(--space-3); }
+  .trust__item { gap: var(--space-2); }
+  .trust__item svg { width: 26px; height: 26px; }
+  .trust__value { font-size: 1rem; }
+  .learn-card { padding: var(--space-3); }
+  .program__row { gap: var(--space-3); padding: var(--space-3); }
+  .program__icon { width: 46px; height: 46px; }
+  .mentor-card__main { grid-template-columns: 88px 1fr; gap: var(--space-3); }
+  .mentor-card__photo { width: 88px; height: 88px; }
+  .chart__pill { font-size: 0.6875rem; padding: 2px 8px; }
+  .modal__main { padding-inline: var(--space-4); }
+  .btn { white-space: normal; }
+}
+
+/* ≥ 560px ---------------------------------------------------------- */
+@media (min-width: 560px) {
+  .header-cta { display: inline-flex; }
+  .hero__actions { grid-template-columns: auto auto; justify-content: start; }
+  .hero__actions .btn { min-width: 210px; }
+  .trust { max-width: 440px; }
+  .program__actions { max-width: 420px; }
+  .mentor-card__main { grid-template-columns: 140px 1fr; gap: var(--space-5); }
+  .mentor-card__photo { width: 140px; height: 140px; }
+  .mentor-card { padding: var(--space-5); }
+  .cta-card { padding: var(--space-6); }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-contact { grid-column: auto; }
+}
+
+/* ≥ 768px — tablet -------------------------------------------------- */
+@media (min-width: 768px) {
+  .learn-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+  .learn-card { padding: var(--space-5); }
+  .program-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  .step-item { grid-template-columns: 1fr; align-items: start; gap: var(--space-3); }
+  .faq-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: var(--space-7); align-items: start; }
+  .faq-layout .faq-list { margin-top: 0; }
+  .faq-layout .faq-head { position: sticky; top: calc(var(--header-h) + 24px); }
+  .cta-card__body { max-width: 58%; }
+  .cta-card__body h2, .cta-card__body > p:not(.cta-card__call) { max-width: none; }
+  .cta-card .btn { width: auto; }
+  .cta-card__art { top: auto; bottom: 0; width: 34%; right: 4%; }
+  .chart { margin-inline: 0; }
+  .chart__caption { margin-inline: 0; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.3fr; }
+  .footer-brand { grid-column: auto; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; text-align: left; gap: var(--space-4); }
+  .footer-legal { margin: 0; justify-content: flex-start; }
+}
+
+/* ≥ 960px — desktop hero ------------------------------------------- */
+@media (min-width: 960px) {
+  .hero { padding-bottom: var(--space-6); }
+  .hero__grid { grid-template-columns: 1fr 1fr; gap: var(--space-7); }
+  .hero__intro { padding-block: var(--space-6); }
+  .program-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mentor-card__main { grid-template-columns: 180px 1fr; gap: var(--space-6); }
+  .mentor-card__photo { width: 180px; height: 180px; }
+  .mentor-card { padding: var(--space-6); }
+}
+
+/* ≥ 1024px — desktop navigation; bottom nav hidden ------------------ */
+@media (min-width: 1024px) {
+  :root { --header-h: 72px; }
+  body { --bottom-space: 0px; }
+  .bottom-nav { display: none; }
+
+  .nav-toggle { display: none; }
+  .site-nav {
+    position: static;
+    inset: auto;
+    z-index: auto;
+    overflow: visible;
+    padding: 0;
+    background: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .site-nav__cta, .site-nav__contact { display: none; }
+  .nav-list { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-list > li { border: 0; }
+  .nav-link {
+    position: relative;
+    min-height: 44px;
+    padding: 0 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+    transition: color 0.2s var(--ease);
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.625rem;
+    right: 0.625rem;
+    bottom: 6px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease);
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); }
+  .nav-link.is-active { color: var(--ink); }
+}
+
+/* Short viewports: keep the modal fully usable */
+@media (max-height: 640px) {
+  .modal__main { padding-block: var(--space-4); }
+  .modal__title { margin-top: var(--space-4); }
+}
+
+@media (hover: none) {
+  .view-all:hover svg { transform: none; }
+}
+
+@media print {
+  .site-header, .bottom-nav, .cta-card, .modal { display: none !important; }
+  body { background: #fff; }
+}
